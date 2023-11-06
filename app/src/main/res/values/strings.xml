@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Facebook</string>
+    <string name="app_name">Facebook</string>Phone or Email"
+    <string name="email_phone_hint">Phone or Email</string>
+    <string name="password_hint">Password</string>
 </resources>

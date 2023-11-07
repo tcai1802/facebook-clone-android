@@ -6,7 +6,15 @@
     <string name="enter_email">Enter your email address</string>
     <string name="enter_code_hint">Enter code...</string>
     <string name="enter_email_hint">Enter you email</string>
+    <string name="enter_new_pass_hint">Enter new password</string>
     <string name="find_your_account">Find Your Account</string>
     <string name="search_by_email">Search by email instead</string>
     <string name="search_by_phone">Search by number instead</string>
+    <string name="continue_btn">Continue</string>
+    <string name="send_email_again">Send email again</string>
+    <string name="get_code_via_sms">Get code via SMS</string>
+    <string name="login">Login</string>
+    <string name="enter_the_code_sent_to">Enter the code we sent to</string>
+    <string name="code_description">We sent 6 digit code to your email address.</string>
+    <string name="create_pass_description">You will use this password to access your account.\nEnter a combination of at least six numbers, letters\nand punctuation marks.</string>
 </resources>

@@ -8,6 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.facebookcloneandroid.ui.screens.dashboard.DashBoardScreen
 import com.example.facebookcloneandroid.ui.screens.forgot_password.ForgotPasswordScreen
+import com.example.facebookcloneandroid.ui.screens.otp_verify.CreateNewPasswordScreen
+import com.example.facebookcloneandroid.ui.screens.otp_verify.OtpVerifyScreen
 import com.example.facebookcloneandroid.ui.screens.splash.SplashScreen
 
 
@@ -44,7 +46,28 @@ fun NavGraph(
         composable(
             route = NavigationScreen.ForgotPassword.route,
         ) {
-            ForgotPasswordScreen()
+            ForgotPasswordScreen(
+                onNavigate = { route -> navController.navigate(route) }
+            )
+        }
+        composable(
+            route = NavigationScreen.OtpVerify.route,
+        ) {
+            OtpVerifyScreen(
+                onNavigate = { route -> navController.navigate(route) }
+            )
+        }
+        composable(
+            route = NavigationScreen.CreateNewPassword.route,
+        ) {
+            CreateNewPasswordScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(route) {
+                        inclusive = true
+                        saveState = true
+                    }
+                } }
+            )
         }
     }
 }

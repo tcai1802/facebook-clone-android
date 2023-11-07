@@ -33,10 +33,11 @@ fun DefaultButton(
     modifier: Modifier? = null,
     title: String = "",
     buttonType: ButtonType = ButtonType.Filled,
+    onTap: () -> Unit = {},
 ) {
     when(buttonType) {
-        ButtonType.Filled -> FilledButton(modifier,title)
-        ButtonType.Outline -> OutlineButton(modifier,title)
+        ButtonType.Filled -> FilledButton(modifier,title,onTap)
+        ButtonType.Outline -> OutlineButton(modifier,title,onTap)
     }
 }
 
@@ -44,10 +45,11 @@ fun DefaultButton(
 fun FilledButton(
     modifier: Modifier? = null,
     title: String = "",
+    onTap: () -> Unit = {},
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(),
-        onClick = { /*TODO*/ },
+        onClick = { onTap() },
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
         ),
@@ -88,10 +90,11 @@ fun FilledButton(
 fun OutlineButton(
     modifier: Modifier? = null,
     title: String = "",
+    onTap: () -> Unit = {},
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(),
-        onClick = { /*TODO*/ },
+        onClick = { onTap() },
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
         ),

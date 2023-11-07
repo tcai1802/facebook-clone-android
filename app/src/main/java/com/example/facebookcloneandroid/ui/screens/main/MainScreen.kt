@@ -23,8 +23,15 @@ fun MainScreen(
 
     Column {
         when(currentRoute) {
+            NavigationScreen.OtpVerify.route,
+            NavigationScreen.CreateNewPassword.route,
             NavigationScreen.ForgotPassword.route -> DefaultAppBar(
-                title = NavigationScreen.ForgotPassword.title,
+                title = when(currentRoute) {
+                    NavigationScreen.OtpVerify.route -> NavigationScreen.OtpVerify.title
+                    NavigationScreen.ForgotPassword.route -> NavigationScreen.ForgotPassword.title
+                    NavigationScreen.CreateNewPassword.route -> NavigationScreen.CreateNewPassword.title
+                    else -> ""
+                },
                 onBack = {
                     navController.popBackStack()
                 }

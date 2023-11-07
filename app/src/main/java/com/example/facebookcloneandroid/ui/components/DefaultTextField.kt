@@ -38,8 +38,11 @@ fun DefaultTextField(
     hintText: String = "",
     keyboardOptions: KeyboardOptions? = null,
     keyboardActions: KeyboardActions? = null,
+    textStyle: TextStyle? = null,
+    hintStyle: TextStyle? = null,
     onNext: () -> Unit = {},
     onDone: () -> Unit = {},
+    onValidate: (value: String) -> Boolean = {true},
     focusRequester: FocusRequester,
 ) {
     var text by remember { mutableStateOf(value = "") }
@@ -51,7 +54,7 @@ fun DefaultTextField(
         BasicTextField(
             value = text,
             onValueChange = {
-                text = it
+               if(onValidate(it))  text = it
             },
             keyboardOptions = keyboardOptions ?: KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -67,7 +70,7 @@ fun DefaultTextField(
                 },
             ),
             maxLines = 1,
-            textStyle = TextStyle(
+            textStyle = textStyle ?: TextStyle(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.W400,
                 color = Color.Black,
@@ -93,8 +96,9 @@ fun DefaultTextField(
                     interactionSource = remember { MutableInteractionSource() },
                     contentPadding = PaddingValues(vertical = 5.dp),
                     placeholder = { Text(
+                        modifier = Modifier.fillMaxWidth(),
                         text = hintText,
-                        style = TextStyle(
+                        style = hintStyle ?: TextStyle(
                             fontSize = 14.sp,
                             fontWeight = FontWeight.W400,
                             color = Grey999

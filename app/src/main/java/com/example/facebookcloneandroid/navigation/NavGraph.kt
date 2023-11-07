@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.facebookcloneandroid.ui.screens.dashboard.DashBoardScreen
+import com.example.facebookcloneandroid.ui.screens.forgot_password.ForgotPasswordScreen
 import com.example.facebookcloneandroid.ui.screens.splash.SplashScreen
 
 
@@ -36,7 +37,14 @@ fun NavGraph(
         composable(
             route = NavigationScreen.Login.route,
         ) {
-            LoginScreen()
+            LoginScreen(
+                onNavigate = { route -> navController.navigate(route) }
+            )
+        }
+        composable(
+            route = NavigationScreen.ForgotPassword.route,
+        ) {
+            ForgotPasswordScreen()
         }
     }
 }

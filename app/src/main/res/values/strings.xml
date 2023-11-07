@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Facebook</string>Phone or Email"
+    <string name="app_name">Facebook</string>
     <string name="email_phone_hint">Phone or Email</string>
     <string name="password_hint">Password</string>
+    <string name="enter_phone_number">Enter your phone number</string>
+    <string name="enter_email">Enter your email address</string>
+    <string name="enter_code_hint">Enter code...</string>
+    <string name="enter_email_hint">Enter you email</string>
+    <string name="find_your_account">Find Your Account</string>
+    <string name="search_by_email">Search by email instead</string>
+    <string name="search_by_phone">Search by number instead</string>
 </resources>

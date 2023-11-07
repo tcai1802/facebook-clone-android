@@ -35,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.facebookcloneandroid.R
+import com.example.facebookcloneandroid.navigation.NavigationScreen
 import com.example.facebookcloneandroid.ui.components.ButtonType
 import com.example.facebookcloneandroid.ui.components.DefaultButton
 import com.example.facebookcloneandroid.ui.components.DefaultTextField
@@ -45,12 +46,13 @@ import com.example.facebookcloneandroid.ui.theme.GreyAAA
 @Preview(showSystemUi = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen();
+    LoginScreen(onNavigate = {});
 }
 
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier,
+    onNavigate: (route: String) -> Unit
 ) {
     val focusManager = LocalFocusManager.current
     val phoneRequester = remember { FocusRequester() }
@@ -84,8 +86,6 @@ fun LoginScreen(
                 onNext = {
                     focusManager.moveFocus(FocusDirection.Next)
                 },
-                onDone = {
-                },
                 focusRequester = phoneRequester
             )
             Box(modifier = Modifier.height(20.dp))
@@ -95,11 +95,10 @@ fun LoginScreen(
                     keyboardType = KeyboardType.Password,
                     imeAction = ImeAction.Done,
                 ),
-                onNext = {},
                 onDone = {
                     focusManager.clearFocus()
                 },
-                focusRequester = phoneRequester
+                focusRequester = passRequester
             )
             Box(modifier = Modifier.height(50.dp))
             DefaultButton(
@@ -109,7 +108,10 @@ fun LoginScreen(
             Box(modifier = Modifier.height(20.dp))
             Text(
                 modifier = Modifier
-                    .clickable {
+                    .clickable (
+
+                    ) {
+                        onNavigate(NavigationScreen.ForgotPassword.route)
                         Log.d("Tag", "Forgot password")
                     },
                 text = "Forgot Password?",

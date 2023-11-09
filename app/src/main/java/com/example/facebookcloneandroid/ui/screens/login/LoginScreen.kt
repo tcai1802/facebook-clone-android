@@ -35,7 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.facebookcloneandroid.R
-import com.example.facebookcloneandroid.navigation.NavigationScreen
+import com.example.facebookcloneandroid.navigation.Routes
 import com.example.facebookcloneandroid.ui.components.ButtonType
 import com.example.facebookcloneandroid.ui.components.DefaultButton
 import com.example.facebookcloneandroid.ui.components.DefaultTextField
@@ -111,7 +111,7 @@ fun LoginScreen(
                     .clickable (
 
                     ) {
-                        onNavigate(NavigationScreen.ForgotPassword.route)
+                        onNavigate(Routes.ForgotPassword.route)
                         Log.d("Tag", "Forgot password")
                     },
                 text = "Forgot Password?",
@@ -146,6 +146,9 @@ fun LoginScreen(
             DefaultButton(
                 title = "Create new Facebook account",
                 buttonType = ButtonType.Outline,
+                onTap = {
+                    onNavigate(Routes.JoinFacebook.route)
+                }
             )
             Box(modifier = Modifier.height(20.dp))
         }

@@ -1,4 +1,3 @@
-package com.example.facebookcloneandroid.ui.screens.otp_verify
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.facebookcloneandroid.R
-import com.example.facebookcloneandroid.navigation.NavigationScreen
+import com.example.facebookcloneandroid.navigation.Routes
 import com.example.facebookcloneandroid.ui.components.DefaultButton
 import com.example.facebookcloneandroid.ui.components.DefaultTextField
 import com.example.facebookcloneandroid.ui.theme.Grey999
@@ -98,7 +97,7 @@ fun CreateNewPasswordScreen(
         DefaultButton(
             title = stringResource(id = R.string.login),
             onTap = {
-                onNavigate(NavigationScreen.Login.route)
+                onNavigate(Routes.Login.route)
             }
         )
         Spacer(modifier = Modifier.height(20.dp))

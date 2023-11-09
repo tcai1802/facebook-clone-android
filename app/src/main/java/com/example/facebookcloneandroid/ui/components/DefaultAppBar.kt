@@ -1,5 +1,6 @@
 package com.example.facebookcloneandroid.ui.components
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -26,7 +28,7 @@ import com.example.facebookcloneandroid.ui.theme.GreyAAA
 
 @Composable
 fun DefaultAppBar(
-    title: String = "",
+    @StringRes title: Int = 0,
     onBack: () -> Unit
 ) {
     Column(
@@ -51,7 +53,7 @@ fun DefaultAppBar(
             Text(
                 modifier = Modifier
                     .padding(horizontal = 10.dp),
-                text = title,
+                text = stringResource(id = title),
                 style = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.W400,

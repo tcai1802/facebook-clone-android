@@ -17,4 +17,12 @@
     <string name="enter_the_code_sent_to">Enter the code we sent to</string>
     <string name="code_description">We sent 6 digit code to your email address.</string>
     <string name="create_pass_description">You will use this password to access your account.\nEnter a combination of at least six numbers, letters\nand punctuation marks.</string>
+    <string name="create_account">Create account</string>
+    <string name="birthday">Birthday</string>
+    <string name="gender">Gender</string>
+    <string name="terms_and_privacy">Terms &amp; Privacy</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="next">Next</string>
+    <string name="have_an_account_exits">Already have an account?</string>
 </resources>

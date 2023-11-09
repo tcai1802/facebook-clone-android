@@ -26,7 +26,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.facebookcloneandroid.R
-import com.example.facebookcloneandroid.navigation.NavigationScreen
+import com.example.facebookcloneandroid.navigation.Routes
 import com.example.facebookcloneandroid.ui.components.DefaultButton
 import com.example.facebookcloneandroid.ui.components.DefaultTextField
 
@@ -94,7 +94,7 @@ fun ForgotPasswordScreen(
         DefaultButton(
             title = stringResource(id = R.string.find_your_account),
             onTap = {
-                onNavigate(NavigationScreen.OtpVerify.route)
+                onNavigate(Routes.OtpVerify.route)
             }
         )
         Spacer(modifier = Modifier.weight(1f))

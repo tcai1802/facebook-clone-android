@@ -1,5 +1,6 @@
 package com.example.facebookcloneandroid.navigation
 
+import JoinFacebookScreenScreen
 import LoginScreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,47 +21,59 @@ fun NavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = NavigationScreen.Splash.route
+        startDestination = Routes.Splash.route
     ) {
         composable(
-            route = NavigationScreen.Splash.route,
+            route = Routes.Splash.route,
         ) {
             SplashScreen(
                 changePage =  {
-                    navController.navigate(NavigationScreen.Login.route)
+                    navController.navigate(Routes.Login.route)
                 }
             )
         }
         composable(
-            route = NavigationScreen.DashBoard.route,
+            route = Routes.DashBoard.route,
         ) {
             DashBoardScreen()
         }
         composable(
-            route = NavigationScreen.Login.route,
+            route = Routes.Login.route,
         ) {
             LoginScreen(
                 onNavigate = { route -> navController.navigate(route) }
             )
         }
         composable(
-            route = NavigationScreen.ForgotPassword.route,
+            route = Routes.ForgotPassword.route,
         ) {
             ForgotPasswordScreen(
                 onNavigate = { route -> navController.navigate(route) }
             )
         }
         composable(
-            route = NavigationScreen.OtpVerify.route,
+            route = Routes.OtpVerify.route,
         ) {
             OtpVerifyScreen(
                 onNavigate = { route -> navController.navigate(route) }
             )
         }
         composable(
-            route = NavigationScreen.CreateNewPassword.route,
+            route = Routes.CreateNewPassword.route,
         ) {
             CreateNewPasswordScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(route) {
+                        inclusive = true
+                        saveState = true
+                    }
+                } }
+            )
+        }
+        composable(
+            route = Routes.JoinFacebook.route,
+        ) {
+            JoinFacebookScreenScreen(
                 onNavigate = { route -> navController.navigate(route) {
                     popUpTo(route) {
                         inclusive = true

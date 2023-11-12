@@ -1,7 +1,6 @@
-package com.example.facebookcloneandroid.ui.screens.what_your_birthday
+package com.example.facebookcloneandroid.ui.screens.what_your_gender;
 
-import android.view.LayoutInflater
-import android.widget.DatePicker
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +8,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,23 +20,33 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import com.example.facebookcloneandroid.R
 import com.example.facebookcloneandroid.navigation.Routes
 import com.example.facebookcloneandroid.ui.components.DefaultButton
+import com.example.facebookcloneandroid.ui.components.DefaultCheckBox
 import com.example.facebookcloneandroid.ui.theme.Grey999
-import java.util.Calendar
 
 @Preview(showSystemUi = true)
 @Composable
-fun WhatYourBirthDayScreenPreview() {
-    WhatYourBirthDayScreen {}
+fun WhatYourGenderScreenPreview() {
+    WhatYourGenderScreen {}
 }
 
+
 @Composable
-fun WhatYourBirthDayScreen(
+fun WhatYourGenderScreen(
     onNavigate: (route: String) -> Unit
 ) {
+    val genderList = mutableListOf<Map<String, String>>(
+        hashMapOf("title" to "Female"),
+        hashMapOf("title" to "Male"),
+        hashMapOf(
+            "title" to "Custom",
+            "description" to "Select customer to choose another gender,\n" +
+                " or if you’d rather not say"
+        )
+    )
+    var currentIndex = remember { mutableIntStateOf(value = 0) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,7 +55,7 @@ fun WhatYourBirthDayScreen(
     ) {
         Spacer(modifier = Modifier.height(30.dp))
         Text(
-            text = "What’s your birthday?",
+            text = "What's your gender?",
             style = TextStyle(
                 color = Color.Black,
                 fontSize = 18.sp,
@@ -53,8 +64,7 @@ fun WhatYourBirthDayScreen(
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(
-            text = "Choose your date of birth. \n" +
-                    "You can always make this private later.",
+            text = "You can change who sees your gender on your profile later.",
             style = TextStyle(
                 color = Grey999,
                 fontSize = 12.sp,
@@ -63,32 +73,27 @@ fun WhatYourBirthDayScreen(
             )
         )
         Spacer(modifier = Modifier.weight(1f))
-        AndroidView(
-            factory = {context ->
-                val view = LayoutInflater.from(context).inflate(R.layout.date_picker, null);
-                val datePicker = view.findViewById<DatePicker>(R.id.datePicker)
-                val calendar = Calendar.getInstance() // show today by default
-                datePicker.init(
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH)
-                ) { _, year, monthOfYear, dayOfMonth ->
-                    val date = Calendar.getInstance().apply {
-                        set(year, monthOfYear, dayOfMonth)
-                    }.time
-//                    onSelectedDateUpdate(date)
-                }
-                datePicker
-
+        genderList.mapIndexed { index, data ->
+            Box(modifier = Modifier.padding(bottom = 20.dp)
+            ) {
+                DefaultCheckBox(
+                    title = data["title"] ?: "",
+                    isSelected = index == currentIndex.value,
+                    description = data["description"],
+                    onSelectOrNot = {
+                        currentIndex.value = index
+                    },
+                )
             }
-        )
+        }
         Spacer(modifier = Modifier.weight(1f))
         DefaultButton(
             title = stringResource(id = R.string.next),
             onTap = {
-                onNavigate(Routes.WhatYourGender.route)
+                onNavigate(Routes.ContactNumber.route)
             }
         )
         Spacer(modifier = Modifier.weight(2f))
     }
 }
+

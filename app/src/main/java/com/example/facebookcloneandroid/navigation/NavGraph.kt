@@ -1,5 +1,6 @@
 package com.example.facebookcloneandroid.navigation
 
+import ChoosePasswordScreen
 import CreateNewPasswordScreen
 import JoinFacebookScreenScreen
 import LoginScreen
@@ -9,11 +10,14 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.facebookcloneandroid.ui.screens.contact_number.ContactNumberScreen
 import com.example.facebookcloneandroid.ui.screens.dashboard.DashBoardScreen
 import com.example.facebookcloneandroid.ui.screens.forgot_password.ForgotPasswordScreen
 import com.example.facebookcloneandroid.ui.screens.otp_verify.OtpVerifyScreen
 import com.example.facebookcloneandroid.ui.screens.splash.SplashScreen
+import com.example.facebookcloneandroid.ui.screens.term_privacy.TermPrivacyScreen
 import com.example.facebookcloneandroid.ui.screens.what_your_birthday.WhatYourBirthDayScreen
+import com.example.facebookcloneandroid.ui.screens.what_your_gender.WhatYourGenderScreen
 
 
 @Composable
@@ -105,6 +109,51 @@ fun NavGraph(
                         inclusive = true
                         saveState = true
                     }
+                } }
+            )
+        }
+        composable(
+            route = Routes.WhatYourGender.route,
+        ) {
+            WhatYourGenderScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(route) {
+                        inclusive = true
+                        saveState = true
+                    }
+                } }
+            )
+        }
+        composable(
+            route = Routes.ContactNumber.route,
+        ) {
+            ContactNumberScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(route) {
+                        inclusive = true
+                        saveState = true
+                    }
+                } }
+            )
+        }
+        composable(
+            route = Routes.ChoosePassword.route,
+        ) {
+            ChoosePasswordScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(route) {
+                        inclusive = true
+                        saveState = true
+                    }
+                } }
+            )
+        }
+        composable(
+            route = Routes.TermsAndPrivacy.route,
+        ) {
+            TermPrivacyScreen(
+                onNavigate = { route -> navController.navigate(route) {
+                    popUpTo(0)
                 } }
             )
         }

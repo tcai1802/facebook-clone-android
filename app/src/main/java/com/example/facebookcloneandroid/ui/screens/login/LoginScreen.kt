@@ -104,6 +104,9 @@ fun LoginScreen(
             DefaultButton(
                 title = "Login",
                 buttonType = ButtonType.Filled,
+                onTap = {
+                    onNavigate(Routes.DashBoard.route)
+                }
             )
             Box(modifier = Modifier.height(20.dp))
             Text(

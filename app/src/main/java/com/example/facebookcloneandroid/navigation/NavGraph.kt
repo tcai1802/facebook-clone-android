@@ -34,7 +34,7 @@ fun NavGraph(
         ) {
             SplashScreen(
                 changePage =  {
-                    navController.navigate(Routes.Login.route)
+                    navController.navigate(Routes.DashBoard.route)
                 }
             )
         }

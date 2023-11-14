@@ -1,29 +1,45 @@
 package com.example.facebookcloneandroid.ui.screens.dashboard
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.facebookcloneandroid.R
+import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoardAppBar
+import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoardTabBar
+import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoardTabBarEnum
+import com.example.facebookcloneandroid.ui.screens.dashboard.home_tab_screen.HomeTabScreen
 
+@Preview(showSystemUi = true)
+@Composable
 
+fun DashBoardScreenPreview() {
+    DashBoardScreen()
+}
 @Composable
 fun DashBoardScreen(
     modifier: Modifier = Modifier,
 ) {
-    Column {
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = null,
-            modifier = Modifier
-                .width(130.dp)
-                .height(100.dp)
+    var currentTab = remember {
+        mutableStateOf(DashBoardTabBarEnum.Home)
+    }
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        DashBoardAppBar()
+        DashBoardTabBar(
+            currentTabSelected = currentTab.value,
+            onSelectedTab = {
+                currentTab.value = it
+            }
         )
-        Text(text = "DashBoardScreen")
+        HomeTabScreen()
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
+

@@ -26,8 +26,8 @@ import com.example.facebookcloneandroid.R
 import com.example.facebookcloneandroid.ui.theme.Blue384CFF
 
 enum class DashBoardTabBarEnum (
-    @DrawableRes val iconUrl: Int,
-    @DrawableRes val iconSelectedUrl: Int
+    @DrawableRes val iconUrl: Int = 0,
+    @DrawableRes val iconSelectedUrl: Int = 0,
 ) {
     Home(iconUrl = R.drawable.ic_home, iconSelectedUrl = R.drawable.ic_home_selected),
     Friends(iconUrl = R.drawable.ic_friend, iconSelectedUrl = R.drawable.ic_friend_selected),

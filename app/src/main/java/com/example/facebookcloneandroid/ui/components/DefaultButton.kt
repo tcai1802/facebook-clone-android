@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -33,10 +34,11 @@ fun DefaultButton(
     modifier: Modifier? = null,
     title: String = "",
     buttonType: ButtonType = ButtonType.Filled,
+    textStyle: TextStyle? =  null,
     onTap: () -> Unit = {},
 ) {
     when(buttonType) {
-        ButtonType.Filled -> FilledButton(modifier,title,onTap)
+        ButtonType.Filled -> FilledButton(modifier,title,onTap,textStyle)
         ButtonType.Outline -> OutlineButton(modifier,title,onTap)
     }
 }
@@ -46,9 +48,10 @@ fun FilledButton(
     modifier: Modifier? = null,
     title: String = "",
     onTap: () -> Unit = {},
+    textStyle: TextStyle? =  null,
 ) {
     Button(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.wrapContentWidth(),
         onClick = { onTap() },
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent
@@ -74,8 +77,7 @@ fun FilledButton(
         ) {
             Text(
                 text = title,
-                color = Color.White,
-                style = TextStyle(
+                style = textStyle ?: TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.W700,
                     color = Color.White,

@@ -14,8 +14,10 @@ import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoar
 import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoardTabBar
 import com.example.facebookcloneandroid.ui.screens.dashboard.components.DashBoardTabBarEnum
 import com.example.facebookcloneandroid.ui.screens.dashboard.home_tab_screen.HomeTabScreen
+import com.example.facebookcloneandroid.ui.screens.dashboard.notification.NotificationTab
 import com.example.facebookcloneandroid.ui.screens.dashboard.personal_tab.PersonTab
 import com.example.facebookcloneandroid.ui.screens.dashboard.request_friend_tab.RequestFriendTabScreen
+import com.example.facebookcloneandroid.ui.screens.dashboard.watch_video_tab.WatchVideoTab
 
 @Preview(showSystemUi = true)
 @Composable
@@ -44,8 +46,9 @@ fun DashBoardScreen(
             DashBoardTabBarEnum.Home -> HomeTabScreen()
             DashBoardTabBarEnum.Friends -> RequestFriendTabScreen()
             DashBoardTabBarEnum.Personal -> PersonTab()
-            DashBoardTabBarEnum.WatchVideo -> HomeTabScreen()
-            DashBoardTabBarEnum.Menu -> HomeTabScreen()
+            DashBoardTabBarEnum.WatchVideo -> WatchVideoTab()
+            DashBoardTabBarEnum.Notification -> NotificationTab()
+            DashBoardTabBarEnum.Menu -> NotificationTab()
             else -> {}
         }
 
